@@ -26,14 +26,6 @@ const navbarList  = document.querySelector("#navbar__list");
 const listOfSection= document.querySelectorAll("section");
 
 
-/**
- * End Global Variables
- 
- * Begin Main Functions
- * 
-*/
-
-
 // build the nav
 
 listOfSection.forEach((section , index) => {
@@ -44,7 +36,7 @@ listOfSection.forEach((section , index) => {
   });
 
 // getting the largest value that's less or equal to the number
-const offsetSection = (section) => {
+   const offsetSection = (section) => {
     return Math.floor(section.getBoundingClientRect().top);
 };
 
@@ -54,11 +46,12 @@ const removeActiveSection = (section) => {
     section.style.cssText = "background-color: linear-gradient(0deg, rgba(255,255,255,.1) 0%, rgba(255,255,255,.2) 100%)";
     
 };
+
 // adding the active class
 const addActiveSection = (condition, section) => {
     if(condition){
         section.classList.add('sectionActive');
-        section.style.cssText = "border: 7px solid #fff;";
+        section.style.cssText = "border: 7px solid #000;";
     };
 };
 
@@ -79,31 +72,24 @@ const sectionsActive = () => {
 window.addEventListener('scroll' ,sectionsActive);
 
 
+//smoothly scroll when click links
+
+const makeNavLinksSmooth = ( ) => {
+  const navLinks = document.querySelectorAll( '.menu__link' );
+
+  for ( let n in navLinks ) {
+    if ( navLinks.hasOwnProperty( n ) ) {
+      navLinks[ n ].addEventListener( 'click', e => {
+        e.preventDefault( );
+        document.querySelector( navLinks[ n ].hash )
+          .scrollIntoView( {
+            behavior: "smooth"
+          } );
+      } );
+    }
+  }
+}
+makeNavLinksSmooth( );
 
 
 });
-
-
-
- // 
-	
-
-
-// Add class 'active' to section when near top of viewport
-
-
-// Scroll to anchor ID using scrollTO event
-
-
-/**
- * End Main Functions
- * Begin Events
- * 
-*/
-
-// Build menu 
-
-// Scroll to section on link click
-
-// Set sections as active
-
