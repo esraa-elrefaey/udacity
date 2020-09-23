@@ -51,7 +51,29 @@ const removeActiveSection = (section) => {
 const addActiveSection = (condition, section) => {
     if(condition){
         section.classList.add('sectionActive');
-        section.style.cssText = "border: 7px solid #000;";
+        section.style.cssText = "border: 7px solid #fff;";
+
+            //return section =>num Section active//
+             const aSection = section.getAttribute('data-nav');  
+             const links= document.querySelectorAll('.menu__link');
+          for (link of links ) {
+
+            //return links =>"section i "//
+             const aLink =link.getAttribute('id');
+
+             // remove the active class
+             link.classList.remove('active');
+
+             // active section related the same link 
+           if (aSection == aLink ) {
+
+            // adding the active class
+            link.classList.add('active');
+            
+           }
+          }
+          
+       
     };
 };
 
